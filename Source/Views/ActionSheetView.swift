@@ -57,7 +57,7 @@ final class ActionSheetView: UIView, AlertControllerViewRepresentable {
         self.cancelLabel.attributedText = self.cancelAction?.attributedTitle
 
         let cancelButtonBackground = UIImage.image(with: self.visualStyle.actionHighlightColor)
-        self.cancelButton.setBackgroundImage(cancelButtonBackground, for: .highlighted)
+        self.cancelButton.setBackgroundImage(cancelButtonBackground, for: UIControl.State.highlighted)
         self.cancelHeightConstraint.constant = self.visualStyle.actionViewSize.height
 
         let noTextProvided = self.title?.string.isEmpty != false && self.message?.string.isEmpty != false
@@ -79,7 +79,7 @@ final class ActionSheetView: UIView, AlertControllerViewRepresentable {
         self.cancelButton.isHighlighted = cancelIsSelected
 
         if cancelIsSelected && sender.state == .ended {
-            self.cancelButton.sendActions(for: .touchUpInside)
+            self.cancelButton.sendActions(for: UIControl.Event.touchUpInside)
         }
     }
 
@@ -108,8 +108,7 @@ final class ActionSheetView: UIView, AlertControllerViewRepresentable {
 }
 
 private extension UIImage {
-
-    class func image(with color: UIColor) -> UIImage {
+    static func image(with color: UIColor) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
 
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)

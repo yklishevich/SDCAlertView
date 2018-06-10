@@ -105,7 +105,7 @@ final class DemoViewController: UITableViewController {
     private func presentUIAlertController() {
         let title = self.titleTextField.content
         let message = self.messageTextField.content
-        let style = UIAlertControllerStyle(rawValue: self.styleControl.selectedSegmentIndex)!
+        let style = UIAlertController.Style(rawValue: self.styleControl.selectedSegmentIndex)!
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
 
         let textFields = Int(self.textFieldCountTextField.content ?? "0")!
